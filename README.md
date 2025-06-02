@@ -100,23 +100,7 @@ An Android app that displays daily weather for Vijayawada using mock data, store
 
 ---
 
-## Prerequisites
 
-- **Android Studio** (latest stable version)
-- **Minimum SDK**: API 21 (Android 5.0 Lollipop)
-- **Dependencies**: Room, WorkManager, LiveData, ViewModel, org.json
-
----
-
-## Setup Instructions
-
-1. Clone the repository.
-2. Add `weather_mock.json` to `app/src/main/assets` with sample data (e.g., temperature, humidity, condition, day).
-3. Open in Android Studio and sync with Gradle.
-4. Build and run on a device or emulator.
-5. Test: View weather, refresh data, and check the weekly summary.
-
----
 
 ## Notes
 
@@ -124,30 +108,4 @@ An Android app that displays daily weather for Vijayawada using mock data, store
 - Persists data in Room for offline access
 - No real API; assumes Vijayawada as the city
 
----
 
-## General Requirements
-
-### C++ Projects (NQueens, ModuleLoader)
-- Compiler: `g++` or any C++11-compatible compiler  
-- Standard libraries: `<iostream>`, `<vector>`, `<string>`
-
-### WeatherTrack
-- Android Studio, Android SDK  
-- Mock data file: `weather_mock.json`
-
----
-
-## How to Use
-
-- **NQueens**: Compile and run, input N, view solutions  
-- **ModuleLoader**: Compile and run, check sample outputs for cycles  
-- **WeatherTrack**: Build in Android Studio, add JSON file, run on device/emulator, test UI and background updates
-
----
-
-## Future Improvements
-
-- **NQueens**: Add visualization or support for larger N  
-- **ModuleLoader**: Accept custom input for nodes and edges  
-- **WeatherTrack**: Integrate real weather API, add city selection, include weather icons
