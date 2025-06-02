@@ -1,0 +1,9 @@
+[
+  { "temperature": 32, "humidity": 60, "condition": "Sunny", "day": "Monday" },
+  { "temperature": 30, "humidity": 65, "condition": "Partly Cloudy", "day": "Tuesday" },
+  { "temperature": 29, "humidity": 70, "condition": "Rainy", "day": "Wednesday" },
+  { "temperature": 31, "humidity": 55, "condition": "Clear", "day": "Thursday" },
+  { "temperature": 28, "humidity": 68, "condition": "Cloudy", "day": "Friday" },
+  { "temperature": 27, "humidity": 72, "condition": "Stormy", "day": "Saturday" },
+  { "temperature": 33, "humidity": 58, "condition": "Hot", "day": "Sunday" }
+]
