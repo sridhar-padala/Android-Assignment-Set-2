@@ -1,176 +1,153 @@
 # Android-Assignment-Set-2
-NQueens, ModuleLoader, and WeatherTrack Projects
-Overview
+
+## NQueens, ModuleLoader, and WeatherTrack Projects
+
+### Overview
 This repository contains three distinct projects:  
 
-NQueens Solver: A C++ solution for the N-Queens problem, finding all valid placements of queens on an NxN chessboard.  
-ModuleLoader: A C++ program to detect circular dependencies in a directed graph of modules.  
-WeatherTrack: An Android app to display and manage mock weather data for Vijayawada with a weekly summary.
+- **NQueens Solver**: A C++ solution for the N-Queens problem, finding all valid placements of queens on an NxN chessboard.  
+- **ModuleLoader**: A C++ program to detect circular dependencies in a directed graph of modules.  
+- **WeatherTrack**: An Android app to display and manage mock weather data for Vijayawada with a weekly summary.
 
-Project Details
-1. NQueens Solver
-Description
+---
+
+## Project Details
+
+### 1. NQueens Solver
+
+#### Description
 Solves the classic N-Queens problem, where N queens must be placed on an NxN chessboard such that no two queens attack each other (no shared row, column, or diagonal).
-Features
 
-Accepts user input for board size N (1 to 9).
-Uses backtracking to find all valid queen placements.
-Displays each solution as a board with 'Q' for queens and '.' for empty cells.
+#### Features
+- Accepts user input for board size N (1 to 9)
+- Uses backtracking to find all valid queen placements
+- Displays each solution as a board with `'Q'` for queens and `'.'` for empty cells
 
-Key Components
+#### Key Components
 
-NQueensSolver Class:
-solveNQueens(int n): Public method to initiate solving and return all solutions.
-placeQueens: Recursive function using backtracking to place queens row by row.
-isSafe: Checks if a queen can be placed at a position without conflicts.
+- **NQueensSolver Class**:
+  - `solveNQueens(int n)`: Public method to initiate solving and return all solutions
+  - `placeQueens`: Recursive function using backtracking to place queens row by row
+  - `isSafe`: Checks if a queen can be placed at a position without conflicts
 
+- **Main Function**:
+  - Takes user input for N
+  - Prints total number of solutions and each board configuration
 
-Main Function:
-Takes user input for N.
-Prints total number of solutions and each board configuration.
+---
 
+### 2. ModuleLoader
 
-
-Usage
-
-Compile: g++ nqueens.cpp -o nqueens
-Run: ./nqueens
-Enter a value for N (e.g., 4) and view all possible solutions.
-
-Example
-For N = 4, sample output might include boards like:  
-.Q..
-...Q
-Q...
-..Q.
-
-..Q.
-Q...
-...Q
-.Q..
-
-2. ModuleLoader
-Description
+#### Description
 A C++ program to detect circular dependencies in a directed graph, useful for scenarios like module or software dependency analysis.
-Features
 
-Takes a number of nodes (n) and a list of edges (dependencies).
-Uses Depth-First Search (DFS) to identify cycles.
-Outputs true for cyclic dependencies, false otherwise.
+#### Features
+- Takes a number of nodes (n) and a list of edges (dependencies)
+- Uses Depth-First Search (DFS) to identify cycles
+- Outputs `true` for cyclic dependencies, `false` otherwise
 
-Key Components
+#### Key Components
 
-ModuleLoader Class:
-hasCircularDependency(int n, vector<vector<int>>& edges): Builds a graph and checks for cycles.
-dfsHasCycle: Recursive DFS to detect back edges indicating a cycle.
+- **ModuleLoader Class**:
+  - `hasCircularDependency(int n, vector<vector<int>>& edges)`: Builds a graph and checks for cycles
+  - `dfsHasCycle`: Recursive DFS to detect back edges indicating a cycle
 
+- **State Tracking**:
+  - Uses a state vector: `0` (unvisited), `1` (visiting), `2` (visited)
 
-State Tracking:
-Uses a state vector: 0 (unvisited), 1 (visiting), 2 (visited).
+- **Main Function**:
+  - Tests two sample cases: one without a cycle, one with a cycle
 
+---
 
-Main Function:
-Tests two sample cases: one without a cycle, one with a cycle.
+### 3. WeatherTrack
 
-
-
-Usage
-
-Compile: g++ module_loader.cpp -o module_loader
-Run: ./module_loader
-View results for sample test cases:
-{{0, 1}, {1, 2}, {2, 3}} → false (no cycle)
-{{0, 1}, {1, 2}, {2, 0}} → true (cycle)
-
-
-
-3. WeatherTrack
-Description
+#### Description
 An Android app that displays daily weather for Vijayawada using mock data, stores it in a Room database, and provides a weekly summary. Background updates run periodically.
-Features
 
-Displays current weather: temperature (°C), humidity (%), and condition.
-"Refresh Weather" button fetches new mock data.
-"View Weekly Summary" shows a 7-day weather history.
-Background updates every 6 hours via WorkManager.
+#### Features
+- Displays current weather: temperature (°C), humidity (%), and condition
+- "Refresh Weather" button fetches new mock data
+- "View Weekly Summary" shows a 7-day weather history
+- Background updates every 6 hours via WorkManager
 
-Key Components
+#### Key Components
 
-MainActivity:
-Shows current weather via TextViews.
-Buttons for refresh and summary navigation.
-Observes LiveData for updates.
+- **MainActivity**:
+  - Shows current weather via TextViews
+  - Buttons for refresh and summary navigation
+  - Observes LiveData for updates
 
+- **SummaryActivity**:
+  - Displays a scrollable 7-day summary from the database
 
-SummaryActivity:
-Displays a scrollable 7-day summary from the database.
+- **WeatherRepository**:
+  - Reads mock data from `weather_mock.json` in `assets`
+  - Saves to Room database with timestamps
 
+- **WeatherViewModel**:
+  - Manages UI data with LiveData
 
-WeatherRepository:
-Reads mock data from weather_mock.json in assets.
-Saves to Room database with timestamps.
+- **WeatherWorker**:
+  - Periodic background updates using WorkManager
 
+- **WeatherDatabase & WeatherDao**:
+  - Stores and queries weather data (`WeatherEntity`)
 
-WeatherViewModel:
-Manages UI data with LiveData.
+- **Layouts**:
+  - `activity_main.xml`: LinearLayout for current weather
+  - `activity_summary.xml`: ScrollView for summary
 
+---
 
-WeatherWorker:
-Periodic background updates using WorkManager.
+## Prerequisites
 
+- **Android Studio** (latest stable version)
+- **Minimum SDK**: API 21 (Android 5.0 Lollipop)
+- **Dependencies**: Room, WorkManager, LiveData, ViewModel, org.json
 
-WeatherDatabase & WeatherDao:
-Stores and queries weather data (WeatherEntity).
+---
 
+## Setup Instructions
 
-Layouts:
-activity_main.xml: LinearLayout for current weather.
-activity_summary.xml: ScrollView for summary.
+1. Clone the repository.
+2. Add `weather_mock.json` to `app/src/main/assets` with sample data (e.g., temperature, humidity, condition, day).
+3. Open in Android Studio and sync with Gradle.
+4. Build and run on a device or emulator.
+5. Test: View weather, refresh data, and check the weekly summary.
 
+---
 
+## Notes
 
-Prerequisites
+- Uses mock JSON data mapped to the current day
+- Persists data in Room for offline access
+- No real API; assumes Vijayawada as the city
 
-Android Studio (latest stable version)
-Minimum SDK: API 21 (Android 5.0 Lollipop)
-Dependencies: Room, WorkManager, LiveData, ViewModel, org.json
+---
 
-Setup Instructions
+## General Requirements
 
-Clone the repository.
-Add weather_mock.json to app/src/main/assets with sample data (e.g., temperature, humidity, condition, day).
-Open in Android Studio and sync with Gradle.
-Build and run on a device or emulator.
-Test: View weather, refresh data, and check the weekly summary.
+### C++ Projects (NQueens, ModuleLoader)
+- Compiler: `g++` or any C++11-compatible compiler  
+- Standard libraries: `<iostream>`, `<vector>`, `<string>`
 
-Notes
+### WeatherTrack
+- Android Studio, Android SDK  
+- Mock data file: `weather_mock.json`
 
-Uses mock JSON data mapped to the current day.
-Persists data in Room for offline access.
-No real API; assumes Vijayawada as the city.
+---
 
-General Requirements
+## How to Use
 
-C++ Projects (NQueens, ModuleLoader):
-Compiler: g++ or any C++11-compatible compiler
-Standard libraries: <iostream>, <vector>, <string>
+- **NQueens**: Compile and run, input N, view solutions  
+- **ModuleLoader**: Compile and run, check sample outputs for cycles  
+- **WeatherTrack**: Build in Android Studio, add JSON file, run on device/emulator, test UI and background updates
 
+---
 
-WeatherTrack:
-Android Studio, Android SDK
-Mock data file: weather_mock.json
+## Future Improvements
 
-
-
-How to Use
-
-NQueens: Compile and run, input N, view solutions.
-ModuleLoader: Compile and run, check sample outputs for cycles.
-WeatherTrack: Build in Android Studio, add JSON file, run on device/emulator, test UI and background updates.
-
-Future Improvements
-
-NQueens: Add visualization or support for larger N.
-ModuleLoader: Accept custom input for nodes and edges.
-WeatherTrack: Integrate real weather API, add city selection, include weather icons.
-
+- **NQueens**: Add visualization or support for larger N  
+- **ModuleLoader**: Accept custom input for nodes and edges  
+- **WeatherTrack**: Integrate real weather API, add city selection, include weather icons
